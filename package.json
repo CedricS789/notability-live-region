@@ -42,6 +42,6 @@
     "jsdom": "^26.1.0",
     "obsidian": "1.13.1",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "typescript": "^7.0.2"
   }
 }
