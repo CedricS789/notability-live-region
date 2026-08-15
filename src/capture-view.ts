@@ -1555,7 +1555,7 @@ export class NotabilityCaptureView extends ItemView {
       return;
     }
     if (this.captureInteractionBlocker) return;
-    const blocker = this.stage.ownerDocument.createDiv();
+    const blocker = this.stage.ownerDocument.win.createDiv();
     blocker.className = "notability-live-region-capture-blocker";
     blocker.setAttribute("aria-label", "Capturing Notability preview; press escape to cancel");
     blocker.setAttribute("aria-keyshortcuts", "Escape");

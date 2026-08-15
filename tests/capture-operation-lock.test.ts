@@ -63,6 +63,45 @@ test("every capture-operation phase locks the capture controls", () => {
   }
 });
 
+test("the capture blocker is created as a detached element before it is appended to the stage", () => {
+  const calls: string[] = [];
+  const attributes = new Map<string, string>();
+  const blocker = {
+    className: "",
+    tabIndex: 0,
+    setAttribute: (name: string, value: string) => attributes.set(name, value),
+    addEventListener: (name: string) => calls.push(`listen-${name}`),
+    focus: () => calls.push("focus"),
+    remove: () => calls.push("remove")
+  };
+  const stage = {
+    ownerDocument: {
+      win: {
+        createDiv: () => {
+          calls.push("create-div");
+          return blocker;
+        }
+      },
+      createDiv: () => {
+        throw new Error("Document.createDiv must not be used for a detached blocker");
+      }
+    },
+    append: (element: unknown) => {
+      assert.equal(element, blocker);
+      calls.push("append");
+    }
+  };
+  const view = Object.create(NotabilityCaptureView.prototype) as any;
+  Object.assign(view, { stage, captureInteractionBlocker: null });
+
+  view.setCaptureInteractionBlocked(true);
+
+  assert.equal(view.captureInteractionBlocker, blocker);
+  assert.equal(blocker.className, "notability-live-region-capture-blocker");
+  assert.equal(attributes.get("aria-keyshortcuts"), "Escape");
+  assert.deepEqual(calls, ["create-div", "listen-wheel", "append", "focus"]);
+});
+
 test("copy and whole-page entry points reject overlapping operations", async () => {
   const view = viewWithControls();
   view.clipboardOperationInProgress = true;
