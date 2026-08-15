@@ -61,15 +61,20 @@ test("release tree excludes generated and private runtime state", async () => {
 });
 
 test("policy-sensitive runtime wiring stays publication-safe", async () => {
-  const [main, cache, deploy, readme] = await Promise.all([
+  const [main, cache, capture, deploy, readme] = await Promise.all([
     readFile(path.join(root, "src", "main.ts"), "utf8"),
     readFile(path.join(root, "src", "cache.ts"), "utf8"),
+    readFile(path.join(root, "src", "capture-view.ts"), "utf8"),
     readFile(path.join(root, "scripts", "deploy.mjs"), "utf8"),
     readFile(path.join(root, "README.md"), "utf8")
   ]);
   assert.doesNotMatch(main, /detachLeavesOfType|\.detach\(\)/);
   assert.doesNotMatch(cache, /\.obsidian/);
   assert.match(main, /this\.app\.vault\.configDir/);
+  assert.doesNotMatch(capture, /\bdocument\.createEl\(/);
+  assert.doesNotMatch(capture, /ownerDocument\.createDiv\(/);
+  assert.match(capture, /ownerDocument\.win\.createEl\("webview"\)/);
+  assert.match(capture, /document\.win\.createEl\("canvas"\)/);
   assert.doesNotMatch(deploy, /DEFAULT_VAULT/);
   assert.match(deploy, /Set NOTABILITY_LIVE_REGION_VAULT/);
   for (const heading of ["## Quick start", "## Disclosures", "## Privacy and local data", "## Support and security"]) {

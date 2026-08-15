@@ -533,7 +533,7 @@ export class NotabilityCaptureView extends ItemView {
   private async createNotabilityWebview(): Promise<void> {
     if (!this.stage) throw new Error("The Notability surface is unavailable.");
     const attachmentStartedAt = performance.now();
-    const webview = document.createEl("webview");
+    const webview = this.stage.ownerDocument.win.createEl("webview");
     webview.classList.add("notability-live-region-webview");
     webview.setAttribute("aria-label", "Notability note viewer");
     this.webviewHandle = prepareNotabilityWebview(webview, this.host.viewerPartition());
@@ -1626,7 +1626,7 @@ export class NotabilityCaptureView extends ItemView {
 
     return stitchWholePageCapture<Uint8Array, ImageBitmap, WholePageCanvasSurface, Uint8Array>(plan, chunks, {
       createSurface: ({ width, height }) => {
-        const canvas = document.createEl("canvas");
+        const canvas = document.win.createEl("canvas");
         canvas.width = width;
         canvas.height = height;
         const context = canvas.getContext("2d", { alpha: false });
