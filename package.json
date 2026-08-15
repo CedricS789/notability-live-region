@@ -33,13 +33,13 @@
   "devDependencies": {
     "@codemirror/state": "6.5.0",
     "@codemirror/view": "6.38.6",
-    "@types/jsdom": "^21.1.7",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^24.3.0",
     "@typescript-eslint/parser": "8.67.0",
     "esbuild": "^0.25.9",
     "eslint": "10.8.1",
     "eslint-plugin-obsidianmd": "0.4.1",
-    "jsdom": "^26.1.0",
+    "jsdom": "^30.0.1",
     "obsidian": "1.13.1",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
