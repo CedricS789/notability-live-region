@@ -31,7 +31,7 @@
     "deploy": "npm run check && node scripts/deploy.mjs"
   },
   "devDependencies": {
-    "@codemirror/state": "6.5.0",
+    "@codemirror/state": "6.7.1",
     "@codemirror/view": "6.38.6",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^24.3.0",
