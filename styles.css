@@ -1,0 +1,343 @@
+.notability-live-region-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--background-primary);
+}
+
+.notability-live-region-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.55rem;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+}
+
+.notability-live-region-address-row,
+.notability-live-region-control-row,
+.notability-live-region-segmented,
+.notability-live-region-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.notability-live-region-auto-insert {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  padding-inline: 0;
+}
+
+.notability-live-region-auto-insert.is-active {
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+}
+
+.notability-live-region-address-icon {
+  display: inline-flex;
+  color: var(--text-muted);
+}
+
+.notability-live-region-address-row input[type="url"] {
+  flex: 1 1 auto;
+  min-width: 8rem;
+}
+
+.notability-live-region-control-row {
+  flex-wrap: wrap;
+}
+
+.notability-live-region-segmented {
+  gap: 0;
+  padding: 2px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary-alt);
+}
+
+.notability-live-region-segmented button {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.notability-live-region-segmented button.is-active {
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+}
+
+.notability-live-region-actions {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.notability-live-region-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 16rem;
+  overflow: hidden;
+  background: var(--background-secondary);
+}
+
+.notability-live-region-loading-preview {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: min(26rem, calc(55% - 1.5rem));
+  max-height: calc(100% - 1.5rem);
+  overflow: auto;
+  pointer-events: none;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+
+.notability-live-region-loading-preview-heading {
+  padding: 0.4rem 0.55rem;
+  border-bottom: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  background: var(--background-secondary);
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-semibold);
+}
+
+.notability-live-region-loading-preview-body img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(38rem, 55vh);
+  object-fit: contain;
+  background: white;
+}
+
+.notability-live-region-webview {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.notability-live-region-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.notability-live-region-capture-blocker {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  cursor: progress;
+  background: transparent;
+}
+
+.notability-live-region-selection,
+.notability-live-region-highlight {
+  position: absolute;
+  z-index: 4;
+  border: 2px solid var(--interactive-accent);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--interactive-accent) 16%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--background-primary) 45%, transparent);
+  pointer-events: none;
+}
+
+.notability-live-region-highlight {
+  border-color: var(--color-yellow);
+  background: color-mix(in srgb, var(--color-yellow) 20%, transparent);
+}
+
+.notability-live-region-status {
+  min-height: 2rem;
+  padding: 0.4rem 0.65rem;
+  border-top: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  background: var(--background-secondary);
+  font-size: var(--font-ui-smaller);
+}
+
+.notability-live-region-card {
+  position: relative;
+  margin: 0.6rem 0;
+  overflow: hidden;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-secondary);
+}
+
+.notability-live-region-cm-widget {
+  margin: 0;
+  padding: 0.3rem 0;
+}
+
+.cm-editor .notability-live-region-cm-widget > .notability-live-region-card {
+  margin: 0;
+}
+
+.notability-live-region-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.notability-live-region-preview-image {
+  width: var(--notability-live-region-preview-width, auto);
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: var(--notability-live-region-preview-aspect, auto);
+}
+
+.notability-live-region-card img {
+  display: block;
+  width: var(--notability-live-region-preview-width, auto);
+  height: auto;
+  max-width: 100%;
+  max-height: 32rem;
+  aspect-ratio: var(--notability-live-region-preview-aspect, auto);
+  object-fit: contain;
+  background: white;
+}
+
+.notability-live-region-card.is-full-page img {
+  max-height: none;
+}
+
+.notability-live-region-preview-meta {
+  align-self: stretch;
+  padding: 0.3rem 0.5rem;
+  border-top: 1px solid var(--background-modifier-border);
+  color: var(--text-faint);
+  font-size: var(--font-ui-smaller);
+}
+
+.notability-live-region-card [role="button"]:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -2px;
+}
+
+.notability-live-region-card-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.notability-live-region-card-controls .spacer {
+  flex: 1;
+}
+
+.notability-live-region-placeholder,
+.notability-live-region-error,
+.notability-live-region-hover-status {
+  padding: 1rem;
+  color: var(--text-muted);
+}
+
+.notability-live-region-placeholder {
+  cursor: pointer;
+}
+
+.notability-live-region-error,
+.notability-live-region-hover.is-error .notability-live-region-hover-status {
+  color: var(--text-error);
+}
+
+/* HoverPopover owns placement, dismissal, border, background, and shadow. */
+.notability-live-region-hover {
+  overflow: auto;
+  max-width: min(36rem, 70vw);
+  max-height: min(28rem, 70vh);
+}
+
+.notability-live-region-hover img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 25rem;
+  object-fit: contain;
+}
+
+.notability-live-region-hover .notability-live-region-preview-meta {
+  position: sticky;
+  bottom: 0;
+  background: var(--background-primary);
+}
+
+.notability-live-region-confirm-actions {
+  border-top: 0;
+}
+
+.notability-live-region-blocker {
+  max-width: 52rem;
+  padding: 1rem;
+}
+
+.notability-live-region-card.is-compact .notability-live-region-card-controls {
+  display: none;
+}
+
+.notability-live-region-card.is-compact {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .notability-live-region-loading-preview {
+    width: calc(100% - 1.5rem);
+  }
+
+  .notability-live-region-actions {
+    flex-basis: 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  .notability-live-region-actions button {
+    flex: 1 1 auto;
+  }
+}
+
+@media print {
+  .notability-live-region-card {
+    overflow: visible;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .notability-live-region-card-controls,
+  .notability-live-region-preview-meta {
+    display: none !important;
+  }
+
+  .notability-live-region-card .notability-live-region-preview,
+  .notability-live-region-card img {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .notability-live-region-card img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .notability-live-region-placeholder {
+    cursor: default;
+  }
+}

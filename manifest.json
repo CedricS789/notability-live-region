@@ -1,0 +1,9 @@
+{
+  "id": "notability-live-region",
+  "name": "Notability Live Region",
+  "version": "1.0.0",
+  "minAppVersion": "1.13.0",
+  "description": "Keep Notability notes beside Markdown and copy visual regions or complete pages as internal links and embeds.",
+  "author": "Cédric Sipakam",
+  "isDesktopOnly": true
+}

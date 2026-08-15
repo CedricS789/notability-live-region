@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a reproducible problem without sharing private note data.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Remove private Notability URLs, note content, credentials, and cache images before submitting.
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Plugin version, Obsidian version, and operating system.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Viewer or loading
+        - Browse performance
+        - Area capture
+        - Text capture
+        - Complete-page capture
+        - Links, embeds, or hover preview
+        - Insert on copy
+        - Portable export or printing
+        - Cache or settings
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction
+      description: Use a synthetic or safely shareable note and list exact steps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private URLs, note content, credentials, and identifying cache images.
+          required: true

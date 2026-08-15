@@ -1,0 +1,15 @@
+node_modules/
+main.js
+.tmp/
+*.log
+*.map
+.env
+.env.*
+!.env.example
+.obsidian/
+cache/
+data.json
+coverage/
+SHA256SUMS.txt
+.DS_Store
+Thumbs.db
