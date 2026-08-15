@@ -37,7 +37,7 @@ jobs:
         run: sha256sum main.js manifest.json styles.css > SHA256SUMS.txt
 
       - name: Attest release artifacts
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: |
             main.js
